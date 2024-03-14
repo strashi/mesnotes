@@ -8,16 +8,17 @@ public class Matiere {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+    @Column(name = "id_matiere")
+    private Integer id_matiere;
+    @Column(name = "matiere")
     private String matiere;
 
-    public Integer getId() {
-        return id;
+    public Integer getId_matiere() {
+        return id_matiere;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_matiere(Integer id_matiere) {
+        this.id_matiere = id_matiere;
     }
 
     public String getMatiere() {

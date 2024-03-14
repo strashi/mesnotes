@@ -13,8 +13,8 @@
 
 <div>
     <ul>
-        <li th:each="matiere : ${matieres}">
-            <p th:text="${matiere.getMatiere()}"></p>
+        <li th:each="note : ${notes}">
+            <p th:text="${note.toString()}"></p>
 
         </li>
     </ul>

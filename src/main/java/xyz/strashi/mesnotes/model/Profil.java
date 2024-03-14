@@ -9,17 +9,21 @@ public class Profil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id_profil")
+    private Integer id_profil;
+    @Column(name = "identifiant")
     private String identifiant;
+    @Column(name = "motdepasse")
     private String motdepasse;
+    @Column(name = "role")
     private String role;
 
-    public Integer getId() {
-        return id;
+    public Integer getId_profil() {
+        return id_profil;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_profil(Integer id_profil) {
+        this.id_profil = id_profil;
     }
 
     public String getIdentifiant() {
