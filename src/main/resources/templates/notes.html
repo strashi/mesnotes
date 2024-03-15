@@ -9,19 +9,69 @@
 
 
 <span th:if="${admin}" > <a th:href="@{/admin}">Admin</a> </span></br>
-<a th:href="@{/nouvelleNote}">Entrer une nouvelle note</a></br>
+<!--<a th:href="@{/nouvelleNote}">Entrer une nouvelle note</a></br>-->
 </br>
 <a th:href="@{/logout}">Déconnexion</a></br>
 
 <p>Bonjour <span th:text="${principal.getName()}"></span> </p>
 
 <div>
-    <ul>
+    <h3>Entrer une nouvelle note :</h3>
+    <form th:action="@{/nouvelleNote}" method="post" th:object="${note}">
+
+        <select  th:field="*{matiere}">
+            <option value="">Choisir une matière</option>
+            <option th:each="matiere : ${matieres}"
+                    th:value="${matiere.getId_matiere()}"
+                    th:text="${matiere.getMatiere()}"></option>
+
+        </select>
+
+        <input type="text"  th:field="*{resultat}" placeholder="Quelle note ?">
+
+        <select  th:field="*{sorte}">
+            <option value="">Sorte de travail</option>
+            <option th:each="sorte : ${sortes}"
+                    th:value="${sorte.getId_sorte()}"
+                    th:text="${sorte.getSorte()}"></option>
+
+        </select>
+
+        <input type="date" th:field="*{date}" placeholder="Quelle date ?">
+
+        <input type="text"  th:field="*{commentaire}" placeholder="Un commentaire ?">
+
+        <input type="hidden"  th:field="*{username}">
+
+        <input type="submit" value="Rentrer la nouvelle note"></br>
+        </br>
+
+    </form>
+
+</div>
+<div>
+    <!--<ul>
         <li th:each="note : ${notes}">
             <p th:text="${note.toString()}"></p>
 
         </li>
-    </ul>
+    </ul>-->
+    <div th:each="list : ${metaList}">
+        <h4 th:text="${list.get(0).getMatiere().getMatiere()}"></h4>
+        <div th:each="note : ${list}">
+        <!--    <h4 th:text="${note.getMatiere().getMatiere()}"></h4>-->
+           <!-- <div th:each="note: ${list}">-->
+              <!--  <p th:text="${note.toString()}"></p>-->
+            <span th:text="${note.getResultat()}"></span>
+            <span th:text="${note.getSorte().getSorte()}"></span>
+            <span th:text="${note.getDate()}"></span>
+            <span th:text="${note.commentaire}"></span>
+            <br><br>
+            </div>
+        <!--<p th:text="${map.getKey()}"></p>-->
+
+        <!--</div>-->
+    </div>
 
 </div>
 </body>

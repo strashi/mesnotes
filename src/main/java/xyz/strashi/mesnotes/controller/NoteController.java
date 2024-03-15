@@ -16,6 +16,7 @@ import xyz.strashi.mesnotes.service.SortedetravailService;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class NoteController {
@@ -40,13 +41,21 @@ public class NoteController {
 
         model.addAttribute("principal",principal);
 
-        /*List<Matiere> matieres = matiereService.findAll();
+        Note note = new Note();
+        note.setUsername(principal.getName());
+        model.addAttribute("note",note);
+
+        List<Matiere> matieres = matiereService.findAll();
         model.addAttribute("matieres",matieres);
-        return "notes";*/
+
+        List<Sortedetravail> sortes = sortedetravailService.findAll();
+        model.addAttribute("sortes",sortes);
+
          List<Note> notes = noteService.getNotes();
          model.addAttribute("notes",notes);
 
-
+         List<List<Note>> metaList = noteService.sortNote(principal.getName());
+        model.addAttribute("metaList", metaList);
          return "notes";
     }
 
