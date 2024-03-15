@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link th:href="@{/style.css}" rel="stylesheet" type="text/css">-->
+    <title>Espace administrateur</title>
+
+</head>
+<body >
+    <a th:href="@{/logout}">Déconnexion</a></br>
+    <h3>Gestion des profils</h3>
+
+    <div th:each="profil : ${profils}">
+        <span th:text="${profil.getUsername()}"></span>
+        <span th:if="${profil.role == 'USER'}"> <a th:href="@{/admin/deleteProfil/{id}(id=${profil.getId_profil()})}">Supprimer</a></span>
+    </div>
+
+    <h3>Gestion des matières</h3>
+
+    <div th:each="matiere : ${matieres}">
+        <span th:text="${matiere.getMatiere()}"></span>
+        <a th:href="@{/admin/deleteMatiere/{id}(id=${matiere.getId_matiere()})}">Supprimer</a>
+    </div>
+
+    <div>
+        <form th:action="@{/admin/ajouterMatiere}" method="post">
+            <input type="text" th:name="nomMatiere" placeholder="Nouvelle matière ?" maxlength="20">
+            <input type="submit" value="Ajouter">
+
+        </form>
+    </div>
+
+    <h3>Gestion des sortes de travail</h3>
+
+    <div th:each="sorte : ${sortes}">
+        <span th:text="${sorte.getSorte()}"></span>
+        <a th:href="@{/admin/deleteSorte/{id}(id=${sorte.getId_sorte()})}">Supprimer</a>
+    </div>
+
+    <div>
+        <form th:action="@{/admin/ajouterSorte}" method="post">
+            <input type="text" th:name="nomSorte" placeholder="Nouvelle sorte ?" maxlength="20">
+            <input type="submit" value="Ajouter">
+
+        </form>
+    </div>
+</body>
+</html>

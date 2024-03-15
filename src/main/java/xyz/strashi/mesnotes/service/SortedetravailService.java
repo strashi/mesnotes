@@ -16,4 +16,14 @@ public class SortedetravailService {
     public List<Sortedetravail> findAll(){
         return sortedetravailRepository.findAll();
     }
+
+    public void deleteSorte(Integer id) {
+        sortedetravailRepository.deleteById(id);
+    }
+
+    public void addSorte(String nomSorte) {
+        Sortedetravail sortedetravail = new Sortedetravail();
+        sortedetravail.setSorte(nomSorte);
+        sortedetravailRepository.save(sortedetravail);
+    }
 }

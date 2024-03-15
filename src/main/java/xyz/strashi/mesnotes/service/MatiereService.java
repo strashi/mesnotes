@@ -16,4 +16,14 @@ public class MatiereService {
     public List<Matiere> findAll() {
         return matiereRepository.findAll();
     }
+
+    public void deleteMatiere(Integer id) {
+        matiereRepository.deleteById(id);
+    }
+
+    public void addMatiere(String nomMatiere) {
+        Matiere matiere = new Matiere();
+        matiere.setMatiere(nomMatiere);
+        matiereRepository.save(matiere);
+    }
 }

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import xyz.strashi.mesnotes.model.Profil;
 import xyz.strashi.mesnotes.repository.ProfilRepository;
 
+import java.util.List;
+
 @Service
 public class ProfilService {
 
@@ -22,5 +24,13 @@ public class ProfilService {
         profil.setPassword(hashPassword);*/
         profil.setPassword(passwordEncoder.encode(profil.getPassword()));
         profilRepository.save(profil);
+    }
+
+    public List<Profil> findAll() {
+        return profilRepository.findAll();
+    }
+
+    public void deleteProfil(Integer id) {
+        profilRepository.deleteById(id);
     }
 }
