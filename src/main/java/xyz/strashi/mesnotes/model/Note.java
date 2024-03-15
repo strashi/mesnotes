@@ -1,6 +1,7 @@
 package xyz.strashi.mesnotes.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -12,24 +13,34 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_note")
     private Integer id_note;
-    @Column(name = "note")
-    private String note;
+    @Column(name = "resultat")
+    private String resultat;
     @Column(name = "date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @Column(name = "commentaire")
     private String commentaire;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "id_profil")
-    private Profil profil;
+    private Profil profil;*/
+    @Column(name = "username")
+    private String username;
 
-    public Profil getProfil() {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+/* public Profil getProfil() {
         return profil;
     }
 
     public void setProfil(Profil profil) {
         this.profil = profil;
-    }
+    }*/
 
     public Matiere getMatiere() {
         return matiere;
@@ -62,12 +73,12 @@ public class Note {
         this.id_note = id_note;
     }
 
-    public String getNote() {
-        return note;
+    public String getResultat() {
+        return resultat;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setResultat(String resultat) {
+        this.resultat = resultat;
     }
 
     public Date getDate() {
@@ -90,10 +101,10 @@ public class Note {
     public String toString() {
         return "Note{" +
                 "id_note=" + id_note +
-                ", note='" + note + '\'' +
+                ", resultat='" + resultat + '\'' +
                 ", date=" + date +
                 ", commentaire='" + commentaire + '\'' +
-                ", profil=" + profil +
+                ", username=" + username +
                 ", matiere=" + matiere +
                 ", sorte=" + sorte +
                 '}';

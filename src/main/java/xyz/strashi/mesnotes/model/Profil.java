@@ -11,10 +11,10 @@ public class Profil {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_profil")
     private Integer id_profil;
-    @Column(name = "identifiant")
-    private String identifiant;
-    @Column(name = "motdepasse")
-    private String motdepasse;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "password")
+    private String password;
     @Column(name = "role")
     private String role;
 
@@ -26,20 +26,20 @@ public class Profil {
         this.id_profil = id_profil;
     }
 
-    public String getIdentifiant() {
-        return identifiant;
+    public String getUsername() {
+        return username;
     }
 
-    public void setIdentifiant(String identifiant) {
-        this.identifiant = identifiant;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getMotdepasse() {
-        return motdepasse;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMotdepasse(String motdepasse) {
-        this.motdepasse = motdepasse;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRole() {

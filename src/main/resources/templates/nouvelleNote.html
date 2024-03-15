@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <title>Saisie nouvelle note</title>
+</head>
+<body>
+
+
+    <p>Bonjour <span th:text="${principal.getName()}"></span> </p>
+    <h3>Entrer une nouvelle note :</h3>
+    <div>
+      <form th:action="@{/nouvelleNote}" method="post" th:object="${note}">
+
+          <select name="matiere" th:field="*{matiere}">
+              <option value="">Choisir une matière</option>
+              <option th:each="matiere : ${matieres}"
+                      th:value="${matiere.getId_matiere()}"
+                      th:text="${matiere.getMatiere()}"></option>
+
+          </select>
+
+          <input type="text" name="resultat" th:field="*{resultat}" placeholder="Quelle note ?">
+
+          <select name="sorte" th:field="*{sorte}">
+              <option value="">Sorte de travail</option>
+              <option th:each="sorte : ${sortes}"
+                      th:value="${sorte.getId_sorte()}"
+                      th:text="${sorte.getSorte()}"></option>
+
+          </select>
+
+          <input type="date" name="date" th:field="*{date}" placeholder="Quelle date ?">
+
+          <input type="text" name="commentaire" th:field="*{commentaire}" placeholder="Un commentaire ?">
+
+         <!-- <input type="hidden" name="username" th:field="*{username}" th:value="${principal.getName()}">-->
+          <input type="hidden"  th:field="*{username}">
+
+          <input type="submit" value="Rentrer la nouvelle note">
+      </form>
+
+    </div>
+</body>
+</html>

@@ -5,5 +5,5 @@ import xyz.strashi.mesnotes.model.Profil;
 
 public interface ProfilRepository extends JpaRepository<Profil,Integer> {
 
-    Profil findByIdentifiant(String identifiant);
+    Profil findByUsername(String username);
 }

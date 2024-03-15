@@ -20,9 +20,9 @@ public class CustumUserDetailsService implements UserDetailsService {
     @Autowired
     private ProfilRepository profilRepository;
     @Override
-    public UserDetails loadUserByUsername(String identifiant) throws UsernameNotFoundException {
-        Profil profil = profilRepository.findByIdentifiant(identifiant);
-        return new User(profil.getIdentifiant(),profil.getMotdepasse(),getGrantedAuthorities(profil.getRole()));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Profil profil = profilRepository.findByUsername(username);
+        return new User(profil.getUsername(),profil.getPassword(),getGrantedAuthorities(profil.getRole()));
     }
 
     private List<GrantedAuthority> getGrantedAuthorities(String role){
