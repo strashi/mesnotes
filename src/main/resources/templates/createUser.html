@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Créer une utilisatrice</title>
+</head>
+
+<body>
+<div>
+
+    <h6 ><a th:href="@{/login}">Retour à l'accueil</a></h6>
+    <h6 >Créer une utilisatrice</h6>
+
+    <form th:action="@{/createUser}" th:object="${profil}" method="post">
+
+
+       <input type="text" th:field="*{username}" placeholder="identifiant" required/>
+
+       <div  th:text="${success}" th:if="${success}"></div>
+       <div  th:text="${error}" th:if="${error}"></div>
+
+       <input type="password" th:field="*{password}" placeholder="Mot de passe" required/>
+
+        <input type="hidden" th:field="*{role}">
+
+       <input  type="submit" value="Créer" />
+
+    </form>
+
+</div>
+</body>
+</html>

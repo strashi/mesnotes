@@ -12,7 +12,7 @@
     <div>
       <form th:action="@{/nouvelleNote}" method="post" th:object="${note}">
 
-          <select name="matiere" th:field="*{matiere}">
+          <select  th:field="*{matiere}">
               <option value="">Choisir une matière</option>
               <option th:each="matiere : ${matieres}"
                       th:value="${matiere.getId_matiere()}"
@@ -20,9 +20,9 @@
 
           </select>
 
-          <input type="text" name="resultat" th:field="*{resultat}" placeholder="Quelle note ?">
+          <input type="text"  th:field="*{resultat}" placeholder="Quelle note ?">
 
-          <select name="sorte" th:field="*{sorte}">
+          <select  th:field="*{sorte}">
               <option value="">Sorte de travail</option>
               <option th:each="sorte : ${sortes}"
                       th:value="${sorte.getId_sorte()}"
@@ -30,14 +30,15 @@
 
           </select>
 
-          <input type="date" name="date" th:field="*{date}" placeholder="Quelle date ?">
+          <input type="date" th:field="*{date}" placeholder="Quelle date ?">
 
-          <input type="text" name="commentaire" th:field="*{commentaire}" placeholder="Un commentaire ?">
+          <input type="text"  th:field="*{commentaire}" placeholder="Un commentaire ?">
 
-         <!-- <input type="hidden" name="username" th:field="*{username}" th:value="${principal.getName()}">-->
           <input type="hidden"  th:field="*{username}">
 
-          <input type="submit" value="Rentrer la nouvelle note">
+          <input type="submit" value="Rentrer la nouvelle note"></br>
+          </br>
+          <a th:href="@{/}">Euh, nan, je me suis trompée</a></br>
       </form>
 
     </div>

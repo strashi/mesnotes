@@ -34,14 +34,15 @@ public class SpringSecurityConfig {
                     auth.requestMatchers("/resources/**").permitAll();
                     auth.requestMatchers("/*.css", "*.jpeg").permitAll();
                     auth.requestMatchers("/login").permitAll();
+                    auth.requestMatchers("/createUser").permitAll();
                     auth.requestMatchers("/admin").hasRole("ADMIN");
-                    auth.requestMatchers("/index").hasAnyRole("USER","ADMIN");
+                    auth.requestMatchers("/notes").hasAnyRole("USER","ADMIN");
 
 
                     auth.anyRequest().authenticated();
-        }).formLogin(Customizer.withDefaults()).build();
+       /* }).formLogin(Customizer.withDefaults()).build();*/
 
-             /*   }).formLogin(form ->{
+                }).formLogin(form ->{
                     form.loginPage("/login");
                     form.loginProcessingUrl("/login");
                     form.permitAll();
@@ -50,7 +51,7 @@ public class SpringSecurityConfig {
                 }).logout(out ->{
                     out.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
                 })
-                .build();*/
+                .build();
     }
 
     @Bean

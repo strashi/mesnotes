@@ -9,7 +9,10 @@
 
 
 <span th:if="${admin}" > <a th:href="@{/admin}">Admin</a> </span></br>
-<!--<a class="nav-link" th:href="@{/logout}">Déconnexion</a>-->
+<a th:href="@{/nouvelleNote}">Entrer une nouvelle note</a></br>
+</br>
+<a th:href="@{/logout}">Déconnexion</a></br>
+
 <p>Bonjour <span th:text="${principal.getName()}"></span> </p>
 
 <div>

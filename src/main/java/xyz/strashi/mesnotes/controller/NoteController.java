@@ -29,6 +29,8 @@ public class NoteController {
     @Autowired
     private SortedetravailService sortedetravailService;
 
+
+
     @GetMapping("/")
     public String getNotes(Model model, HttpServletRequest request, Principal principal){
         boolean admin = false;
