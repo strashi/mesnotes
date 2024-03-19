@@ -14,14 +14,11 @@
 
     <div class="row">
         <form action="#" th:action="@{/admin/updateMatiere/{id}(id=${matiere.getId_matiere()})}" th:object="${matiere}" method="post" >
-            <!--
-            TODO: Create a form to edit the values of Bid, there are 2 buttons: Update data and Cancel to the list Bid
-             -->
 
             <div >
                 <label for="matiere" >Matière</label>
                 <div >
-                    <input type="text" name="matiere" th:field="*{nomMatiere}" id="matiere"  >
+                    <input type="text" th:field="*{nomMatiere}" id="matiere"  >
 
                 </div>
             </div>

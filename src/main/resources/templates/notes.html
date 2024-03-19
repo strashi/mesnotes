@@ -68,6 +68,7 @@
             <span th:text="${note.getDate().dayOfMonth}"></span>/<span th:text="${note.getDate().getMonthValue()}"></span>/<span th:text="${note.getDate().getYear()}"></span>
 
             <span th:text="${note.commentaire}"></span>
+            <a th:href="@{/updateNote/{id}(id=${note.getId_note()})}">Modifier/Supprimer</a>
             </p>
 
         </div>

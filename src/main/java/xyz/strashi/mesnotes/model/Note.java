@@ -59,7 +59,9 @@ public class Note {
         this.sorte = sorte;
     }
 
-    @ManyToOne
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
     @JoinColumn(name = "id_matiere")
     private Matiere matiere;
     @ManyToOne

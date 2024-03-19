@@ -73,4 +73,14 @@ public class NoteService {
     public void save(Note note){
         noteRepository.save(note);
     }
+
+    public Note findById(Integer id) {
+        Optional<Note> opt = noteRepository.findById(id);
+        Note note = opt.get();
+        return note;
+    }
+
+    public void deleteById(Integer id) {
+        noteRepository.deleteById(id);
+    }
 }
