@@ -15,11 +15,13 @@
         <span th:text="${profil.getUsername()}"></span>
         <span th:if="${profil.role == 'USER'}"> <a th:href="@{/admin/deleteProfil/{id}(id=${profil.getId_profil()})}">Supprimer</a></span>
     </div>
+    <h6><a th:href="@{/createProfil}">Créer une utilisatrice</a>	</h6>
 
     <h3>Gestion des matières</h3>
 
     <div th:each="matiere : ${matieres}">
-        <span th:text="${matiere.getMatiere()}"></span>
+        <span th:text="${matiere.getNomMatiere()}"></span>
+        <a th:href="@{/admin/updateMatiere/{id}(id=${matiere.getId_matiere()})}">Modifier</a>
         <a th:href="@{/admin/deleteMatiere/{id}(id=${matiere.getId_matiere()})}">Supprimer</a>
     </div>
 
@@ -35,6 +37,7 @@
 
     <div th:each="sorte : ${sortes}">
         <span th:text="${sorte.getSorte()}"></span>
+        <a th:href="@{/admin/updateSorte/{id}(id=${sorte.getId_sorte()})}">Modifier</a>
         <a th:href="@{/admin/deleteSorte/{id}(id=${sorte.getId_sorte()})}">Supprimer</a>
     </div>
 

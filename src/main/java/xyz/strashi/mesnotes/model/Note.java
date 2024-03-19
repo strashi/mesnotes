@@ -3,6 +3,7 @@ package xyz.strashi.mesnotes.model;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class Note {
     private String resultat;
     @Column(name = "date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private LocalDate date;
     @Column(name = "commentaire")
     private String commentaire;
 
@@ -81,11 +82,11 @@ public class Note {
         this.resultat = resultat;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

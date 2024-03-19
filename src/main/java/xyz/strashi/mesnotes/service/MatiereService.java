@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import xyz.strashi.mesnotes.model.Matiere;
 import xyz.strashi.mesnotes.repository.MatiereRepository;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class MatiereService {
@@ -14,7 +14,15 @@ public class MatiereService {
     private MatiereRepository matiereRepository;
 
     public List<Matiere> findAll() {
-        return matiereRepository.findAll();
+        List<Matiere> matieres = matiereRepository.findAll();
+        matieres.sort(new Comparator<Matiere>() {
+            @Override
+            public int compare(Matiere o1, Matiere o2) {
+                return o1.getNomMatiere().compareTo(o2.getNomMatiere());
+            }
+        });
+       return matieres;
+
     }
 
     public void deleteMatiere(Integer id) {
@@ -23,7 +31,16 @@ public class MatiereService {
 
     public void addMatiere(String nomMatiere) {
         Matiere matiere = new Matiere();
-        matiere.setMatiere(nomMatiere);
+        matiere.setNomMatiere(nomMatiere);
         matiereRepository.save(matiere);
+    }
+
+    public void updateMatiere(Matiere matiere) {
+        matiereRepository.save(matiere);
+
+    }
+
+    public Optional<Matiere> findById(Integer id) {
+       return matiereRepository.findById(id);
     }
 }

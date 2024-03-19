@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Modifier une sorte de travail</title>
+    <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css" >-->
+</head>
+<body>
+<div >
+
+    <h2>Modifier une sorte</h2>
+
+
+    <div >
+        <form action="#" th:action="@{/admin/updateSorte/{id}(id=${sortedetravail.getId_sorte()})}" th:object="${sortedetravail}" method="post" >
+
+            <div >
+                <label for="sorte" >Sorte de travail</label>
+                <div >
+                    <input type="text" th:field="*{sorte}" id="sorte"  >
+
+                </div>
+            </div>
+
+            <div >
+                <div >
+                    <!--<input type="hidden" th:field="*{id_matiere}">-->
+                    <a th:href="@{/admin}">Annuler</a>
+                    <input type="submit" value="Modifier la sorte de travail">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

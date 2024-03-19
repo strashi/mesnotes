@@ -6,10 +6,7 @@ import xyz.strashi.mesnotes.dto.NoteDTO;
 import xyz.strashi.mesnotes.model.Note;
 import xyz.strashi.mesnotes.repository.NoteRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class NoteService {
@@ -24,16 +21,22 @@ public class NoteService {
     public List<List<Note>> sortNote (String username) {
         List<Note> noteByUsername = noteRepository.findByUsername(username);
         List<String> matieres = new ArrayList<>();
+        Set<String> setMatieres = new TreeSet<>();
         List<List<Note>> resultat = new ArrayList<>();
 
         for (Note note : noteByUsername) {
-            String nomMatiere = note.getMatiere().getMatiere();
-            if (!matieres.contains(nomMatiere)) {
+            String nomMatiere = note.getMatiere().getNomMatiere();
+          /*  if (!matieres.contains(nomMatiere)) {
                 matieres.add(nomMatiere);
+            }*/
+            if (!setMatieres.contains(nomMatiere)){
+                setMatieres.add(nomMatiere);
             }
 
         }
-        for (String matiere : matieres) {
+      /*  System.out.println(matieres);*/
+       /* System.out.println(setMatieres);*/
+     /*   for (String matiere : matieres) {
 
           List<Note> listNoteParMatiere = new ArrayList<>();
 
@@ -47,7 +50,22 @@ public class NoteService {
             }
             resultat.add(listNoteParMatiere);
 
+        }*/
+        for (String matiere : setMatieres){
+            List<Note> listNoteParMatiere = new ArrayList<>();
+
+            for (Note note : noteByUsername) {
+
+                if ((note.getMatiere().getNomMatiere()).equals(matiere)) {
+                    listNoteParMatiere.add(note);
+
+
+                }
+            }
+            resultat.add(listNoteParMatiere);
+
         }
+
 
         return resultat;
     }

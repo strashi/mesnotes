@@ -19,19 +19,5 @@ public class LoginController {
         return "login";
 
     }
-    @GetMapping("/createUser")
-    public  String createUserPage(Model model){
-        Profil profil = new Profil();
-        profil.setRole("USER");
-        model.addAttribute("profil",profil);
-        return "createUser";
 
-    }
-
-    @PostMapping("/createUser")
-    public String postCreateUser(Profil profil){
-
-        profilService.save(profil);
-        return "redirect:/";
-    }
 }
