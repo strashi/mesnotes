@@ -1,0 +1,41 @@
+body{
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    url("matiereEcole.jpeg");
+
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+}
+h1{
+    font-family: Ubuntu;
+    font-style: italic;
+    border-radius: 15px;
+    border: 3px white groove;
+    background-color: white;
+    width: 20%;
+    text-align: center;
+    margin-top: 40px;
+}
+#login{
+    border: 3px cadetblue groove;
+    border-radius: 15px;
+    background-color: cadetblue;
+    padding: 10px;
+    margin-top: 80px;
+}
+
+#bouton{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+#identifiant{
+    margin-bottom: 6px;
+}
+.info{
+    color: white;
+}

@@ -20,6 +20,7 @@ public class NoteService {
 
     public List<List<Note>> sortNote (String username) {
         List<Note> noteByUsername = noteRepository.findByUsername(username);
+       /* List<Note> noteByUsername = noteRepository.findByUsernameJPQL(username);*/
         List<String> matieres = new ArrayList<>();
         Set<String> setMatieres = new TreeSet<>();
         List<List<Note>> resultat = new ArrayList<>();

@@ -8,6 +8,7 @@
 
 </head>
 <body >
+    <h1>Mes notes</h1>
     <div id="login">
         <div class="info" th:if="${param.error}">
             Identifiant ou mot de passe invalide.
@@ -17,10 +18,10 @@
         </div>
         <form th:action="@{/login}" method="post">
 
-            <div  ><input type="text" name="username" placeholder="Identifiant" /> </div>
+            <div id="identifiant" ><input type="text" name="username" placeholder="Identifiant" /> </div>
             <div ><input type="password" name="password" placeholder="Password" /> </div>
 
-            <div><input type="submit" value="Connexion"/></div>
+            <div id="bouton"><input type="submit" value="Connexion"/></div>
 
         </form>
 

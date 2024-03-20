@@ -11,7 +11,7 @@
     <h6 ><a th:href="@{/login}">Retour à l'accueil</a></h6>
     <h6 >Créer une utilisatrice</h6>
 
-    <form th:action="@{/createUser}" th:object="${profil}" method="post">
+    <form th:action="@{/createProfil}" th:object="${profil}" method="post">
 
        <input type="text" th:field="*{username}" placeholder="identifiant" required/></br>
 

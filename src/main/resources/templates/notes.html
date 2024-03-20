@@ -2,81 +2,91 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
+    <link th:href="@{/styleNote.css}" rel="stylesheet" type="text/css">
     <title>Bienvenue!</title>
 </head>
 <body>
+    <header>
+        <h2 id="salutation">Bonjour <span th:text="${principal.getName()}"></span> </h2>
 
+        <!--<span th:if="${admin}" > <a th:href="@{/admin}">Admin</a> </span></br>-->
+        <div id="boutons">
+            <span th:if="${admin}" ><form th:action="@{/admin}">
+                <button type="submit">Espace admin</button>
+            </form></span>
+            </br>
 
-
-<span th:if="${admin}" > <a th:href="@{/admin}">Admin</a> </span></br>
-<!--<a th:href="@{/nouvelleNote}">Entrer une nouvelle note</a></br>-->
-</br>
-<a th:href="@{/logout}">Déconnexion</a></br>
-
-<p>Bonjour <span th:text="${principal.getName()}"></span> </p>
-
-<div>
-    <h3>Entrer une nouvelle note :</h3>
-    <form th:action="@{/nouvelleNote}" method="post" th:object="${note}">
-
-        <select  th:field="*{matiere}" required>
-            <option value="">Choisir une matière</option>
-            <option th:each="matiere : ${matieres}"
-                    th:value="${matiere.getId_matiere()}"
-                    th:text="${matiere.getNomMatiere()}"></option>
-
-        </select>
-
-        <input type="text"  th:field="*{resultat}" placeholder="Quelle note ?" required>
-
-        <select  th:field="*{sorte}" required>
-            <option value="">Sorte de travail</option>
-            <option th:each="sorte : ${sortes}"
-                    th:value="${sorte.getId_sorte()}"
-                    th:text="${sorte.getSorte()}"></option>
-
-        </select>
-
-        <input type="date" th:field="*{date}" placeholder="Quelle date ?" required>
-
-        <input type="text"  th:field="*{commentaire}" placeholder="Un commentaire ?">
-
-        <input type="hidden"  th:field="*{username}">
-
-        <input type="submit" value="Rentrer la nouvelle note"></br>
-        </br>
-
-    </form>
-
-</div>
-<div>
-    <!--<ul>
-        <li th:each="note : ${notes}">
-            <p th:text="${note.toString()}"></p>
-
-        </li>
-    </ul>-->
-    <div th:each="list : ${metaList}">
-        <h4 th:text="${list.get(0).getMatiere().getNomMatiere()}"></h4>
-        <div th:each="note : ${list}">
-            <p>
-        <!--    <h4 th:text="${note.getMatiere().getMatiere()}"></h4>-->
-           <!-- <div th:each="note: ${list}">-->
-              <!--  <p th:text="${note.toString()}"></p>-->
-            <span th:text="${note.getResultat()}"></span>
-            <span th:text="${note.getSorte().getSorte()}"></span>
-            <span th:text="${note.getDate().dayOfMonth}"></span>/<span th:text="${note.getDate().getMonthValue()}"></span>/<span th:text="${note.getDate().getYear()}"></span>
-
-            <span th:text="${note.commentaire}"></span>
-            <a th:href="@{/updateNote/{id}(id=${note.getId_note()})}">Modifier/Supprimer</a>
-            </p>
-
+            <form th:action="@{/logout}">
+                <button type="submit">Déconnexion</button>
+            </form>
         </div>
-        <!--<p th:text="${map.getKey()}"></p>-->
+    </header>
 
-        <!--</div>-->
+
+
+
+    <div id="saisie">
+        <h3>Entrer une nouvelle note :</h3>
+        <form th:action="@{/nouvelleNote}" method="post" th:object="${note}">
+
+            <select  th:field="*{matiere}" required>
+                <option value="">Choisir une matière</option>
+                <option th:each="matiere : ${matieres}"
+                        th:value="${matiere.getId_matiere()}"
+                        th:text="${matiere.getNomMatiere()}"></option>
+            </select>
+
+            <input type="text"  th:field="*{resultat}" placeholder="Quelle note ?" size="9" required>
+
+            <select  th:field="*{sorte}" required>
+                <option value="">Sorte de travail</option>
+                <option th:each="sorte : ${sortes}"
+                        th:value="${sorte.getId_sorte()}"
+                        th:text="${sorte.getSorte()}"></option>
+            </select>
+
+            <input type="date" th:field="*{date}" placeholder="Quelle date ?" required>
+
+            <input type="text"  th:field="*{commentaire}" placeholder="Un commentaire ?" >
+
+            <input type="hidden"  th:field="*{username}">
+
+            <input type="submit" value="Rentrer la nouvelle note"></br>
+            </br>
+
+        </form>
+
     </div>
 
-</div>
+
+      <div id="listedenote" th:each="list : ${metaList}">
+          <!--  <h4 th:text="${list.get(0).getMatiere().getNomMatiere()}"></h4>-->
+
+          <div th:switch="${list.get(0).getMatiere().getNomMatiere()}">
+              <span th:case="Deutsch"><h4 id="deutsch">Deutsch</h4></span>
+              <span th:case="Mathe"><h4 id="mathe">Mathe</h4></span>
+              <span th:case="Französisch"><h4 id="französisch">Französisch</h4></span>
+              <span th:case="Englisch"><h4 id="englisch">Englisch</h4></span>
+              <span th:case="*"><h4 th:text="${list.get(0).getMatiere().getNomMatiere()}"></h4></span>
+
+          </div>
+
+            <div id="lignedenote" th:each="note : ${list}">
+                <p>
+                Note :  <span id="note" th:text="${note.getResultat()}"></span>
+                 ( <span  th:text="${note.getSorte().getSorte()}"></span> )
+                le <span th:text="${note.getDate().dayOfMonth}"></span>/<span th:text="${note.getDate().getMonthValue()}"></span>/<span th:text="${note.getDate().getYear()}"></span>
+                <span id="comment" th:text="${note.commentaire}">  </span>
+                <form id="boutonModifNote" th:action="@{/updateNote/{id}(id=${note.getId_note()})}">
+                          <button type="submit">Modifier/Supprimer</button>
+                </form>
+               <!-- <a th:href="@{/updateNote/{id}(id=${note.getId_note()})}">Modifier/Supprimer</a>-->
+                </p>
+
+            </div>
+
+      </div>
+
+
 </body>
 </html>

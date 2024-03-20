@@ -3,53 +3,63 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
+    <link th:href="@{/styleUpdateNote.css}" rel="stylesheet" type="text/css">
     <title>Modifier une note</title>
-    <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css" >-->
+
 </head>
 <body>
-<div >
+
 
     <h2>Modifier une note</h2>
 
 
-    <div class="row">
-        <form action="#" th:action="@{/updateNote/{id}(id=${note.getId_note()})}" th:object="${note}" method="post" >
+    <div id="saisie" >
+        <form  action="#" th:action="@{/updateNote/{id}(id=${note.getId_note()})}" th:object="${note}" method="post" >
+            <div id="champs">
 
-            <select  th:field="*{matiere}" required>
-                <option value="">Choisir une matière</option>
-                <option th:each="matiere : ${matieres}"
-                        th:value="${matiere.getId_matiere()}"
-                        th:text="${matiere.getNomMatiere()}"></option>
+                <select  th:field="*{matiere}" required>
+                    <option value="">Choisir une matière</option>
+                    <option th:each="matiere : ${matieres}"
+                            th:value="${matiere.getId_matiere()}"
+                            th:text="${matiere.getNomMatiere()}"></option>
 
-            </select>
+                </select>
 
-            <input type="text"  th:field="*{resultat}" placeholder="Quelle note ?" required>
+                <input type="text"  th:field="*{resultat}" placeholder="Quelle note ?" required>
 
-            <select  th:field="*{sorte}" required>
-                <option value="">Sorte de travail</option>
-                <option th:each="sorte : ${sortes}"
-                        th:value="${sorte.getId_sorte()}"
-                        th:text="${sorte.getSorte()}"></option>
+                <select  th:field="*{sorte}" required>
+                    <option value="">Sorte de travail</option>
+                    <option th:each="sorte : ${sortes}"
+                            th:value="${sorte.getId_sorte()}"
+                            th:text="${sorte.getSorte()}"></option>
 
-            </select>
+                </select>
 
-            <input type="date" th:field="*{date}" placeholder="Quelle date ?" required>
+                <input type="date" th:field="*{date}" placeholder="Quelle date ?" required>
 
-            <input type="text"  th:field="*{commentaire}" placeholder="Un commentaire ?">
+                <input type="text"  th:field="*{commentaire}" placeholder="Un commentaire ?">
 
-            <input type="hidden"  th:field="*{username}">
+                <input type="hidden"  th:field="*{username}">
 
-            <div >
-                <div >
-                    <!--<input type="hidden" th:field="*{id_matiere}">-->
-                    <a th:href="@{/}">Annuler</a>
-                    <input type="submit" value="Modifier">
-                    <a th:href="@{/deleteNote/{id}(id=${note.getId_note()})}">Supprimer</a>
-                </div>
             </div>
+
+            <div id="boutons">
+                <!--<input type="hidden" th:field="*{id_matiere}">-->
+
+                <input type="submit" value="Modifier">
+               <!-- <a th:href="@{/}">Annuler</a>-->
+                <form th:action="@{/}">
+                    <button type="submit">Annuler</button>
+                </form>
+              <!--  <a th:href="@{/deleteNote/{id}(id=${note.getId_note()})}">Supprimer</a>-->
+                <form th:action="@{/deleteNote/{id}(id=${note.getId_note()})}">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </div>
+
         </form>
     </div>
 
-</div>
+
 </body>
 </html>

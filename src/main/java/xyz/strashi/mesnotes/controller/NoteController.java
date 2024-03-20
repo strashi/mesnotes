@@ -93,7 +93,7 @@ public class NoteController {
 
 
 
-   /* @GetMapping("/nouvelleNote")
+/*    @GetMapping("/nouvelleNote")
     public String getNouvelleNote(Principal principal, Model model){
         Note note = new Note();
         note.setUsername(principal.getName());
@@ -107,15 +107,12 @@ public class NoteController {
         List<Sortedetravail> sortes = sortedetravailService.findAll();
         model.addAttribute("sortes",sortes);
         return "nouvelleNote";
-    }
+    }*/
 
     @PostMapping("/nouvelleNote")
     public String postNouvelleNote(Note note){
-      *//*  Note note1 = new Note();
-        model.addAttribute("note",note1);*//*
-
         noteService.save(note);
         return "redirect:/";
-    }*/
+    }
 
 }
