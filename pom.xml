@@ -10,7 +10,7 @@
     </parent>
     <groupId>xyz.strashi</groupId>
     <artifactId>mesnotes</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>war</packaging>
     <name>mesnotes</name>
     <description>mesnotes</description>
@@ -68,6 +68,7 @@
     </dependencies>
 
     <build>
+        <finalName>mesnotes</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
